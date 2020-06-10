@@ -1,0 +1,15 @@
+.title {
+  text-align: center;
+}
+.title__subheader {
+  text-align: center;
+}
+
+.calculator {
+  border: 2px solid black;
+  width: 60vw;
+  height: 500px;
+  margin: 15px auto;
+  display: flex;
+  border-radius: 4px;
+}
