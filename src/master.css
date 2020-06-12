@@ -20,11 +20,13 @@
 .error.error {
   padding: 6px;
   margin-top: 5px;
+  position: absolute;
+  width: 24.5vw;
 }
 
 .currencies {
   display: flex;
-  margin-top: 6vw;
+  margin-top: 7vw;
   font-size: 1.4vw;
   justify-content: space-between;
   align-items: center;
@@ -35,6 +37,7 @@
 }
 .output {
   width: 20vw;
+  color: black;
 }
 .label {
   margin-bottom: 0;
