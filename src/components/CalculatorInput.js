@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-import { Alert, Button } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 import { makeRequest, convertCurrency, swapFields } from "../actions";
 
 import CalculatorOutput from "./CalculatorOutput";
-let isLoading = false;
 
 class CalculatorInput extends Component {
   // This shows error messages if you haven't correctly inputted shit
@@ -74,6 +73,7 @@ class CalculatorInput extends Component {
             className="icon icon--swap"
             src={require("./icons/swap.svg")}
             onClick={this.props.swapFields}
+            alt="swap currencies"
           />
 
           <Field
@@ -84,7 +84,11 @@ class CalculatorInput extends Component {
         </div>
         <div className="amounts">
           <Field name="amount" label="Amount: " component={this.renderInput} />
-          <img className="icon" src={require("./icons/right.svg")} />
+          <img
+            className="icon"
+            src={require("./icons/right.svg")}
+            alt="equals"
+          />
 
           <CalculatorOutput />
         </div>
