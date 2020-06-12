@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import { Alert, Button } from "react-bootstrap";
 import { makeRequest } from "../actions";
+
+import CalculatorOutput from "./CalculatorOutput";
 let isLoading = false;
 
 class CalculatorInput extends Component {
@@ -50,7 +52,7 @@ class CalculatorInput extends Component {
   };
 
   componentDidMount() {
-    this.props.makeRequest();
+    // this.props.makeRequest();
   }
   render() {
     return (
@@ -58,13 +60,13 @@ class CalculatorInput extends Component {
         className="input-form"
         // onSubmit={this.props.handleSubmit()}
       >
-        <Field name="amount" label="Amount: " component={this.renderInput} />
         <div className="currencies">
           <Field
             name="input_currency"
             label="Currency:"
             component={this.renderSelect}
           />
+          <img className="icon" src={require("./icons/swap.svg")} />
 
           <Field
             name="output_currency"
@@ -72,16 +74,12 @@ class CalculatorInput extends Component {
             component={this.renderSelect}
           />
         </div>
+        <div className="amounts">
+          <Field name="amount" label="Amount: " component={this.renderInput} />
+          <img className="icon" src={require("./icons/right.svg")} />
 
-        <Button
-          variant="outline-secondary"
-          type="submit"
-          disabled={isLoading}
-          // onClick={!isLoading ? this.props.handleSubmit() : null}
-          className="mx-2"
-        >
-          {isLoading ? "Loading..." : "Submit"}
-        </Button>
+          <CalculatorOutput />
+        </div>
       </form>
     );
   }

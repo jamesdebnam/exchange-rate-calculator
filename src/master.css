@@ -18,3 +18,19 @@
   padding: 6px;
   margin-top: 5px;
 }
+
+.currencies {
+  display: flex;
+  justify-content: space-between;
+  width: 60vw;
+}
+
+.amounts {
+  display: flex;
+  justify-content: space-between;
+  width: 60vw;
+}
+
+.icon {
+  width: 60px;
+}
