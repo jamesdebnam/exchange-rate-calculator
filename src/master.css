@@ -13,3 +13,8 @@
   display: flex;
   border-radius: 4px;
 }
+
+.error.error {
+  padding: 6px;
+  margin-top: 5px;
+}
