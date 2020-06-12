@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "713a2ab8e2dacbaa99d458d4f6eb605e",
+    "revision": "365a692bbad74a8ce156332617883b87",
     "url": "/exchange-rate-calculator/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/exchange-rate-calculator/static/css/2.af3c1da9.chunk.css"
   },
   {
-    "revision": "e470961a1bc419d90514",
-    "url": "/exchange-rate-calculator/static/css/main.e6f4feee.chunk.css"
+    "revision": "e1772c714daecc78b8da",
+    "url": "/exchange-rate-calculator/static/css/main.cdb96595.chunk.css"
   },
   {
     "revision": "83c9825b7237b47d8d33",
@@ -20,7 +20,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/exchange-rate-calculator/static/js/2.487abd4e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "e470961a1bc419d90514",
+    "revision": "e1772c714daecc78b8da",
     "url": "/exchange-rate-calculator/static/js/main.1821d470.chunk.js"
   },
   {
