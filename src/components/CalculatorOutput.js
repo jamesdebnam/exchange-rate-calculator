@@ -5,10 +5,8 @@ class CalculatorOutput extends Component {
   render() {
     return (
       <div>
-        <div className="input my-2 mx-2">
-          <label>Output:</label>
-          <br />
-          <input disabled />
+        <div className="input">
+          <input className="output" disabled value={this.props.output} />
         </div>
       </div>
     );
@@ -17,7 +15,7 @@ class CalculatorOutput extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    rates: state.rates,
+    output: state.output,
   };
 };
 

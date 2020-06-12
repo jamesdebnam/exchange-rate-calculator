@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import { Alert, Button } from "react-bootstrap";
-import { makeRequest } from "../actions";
+import { makeRequest, convertCurrency, swapFields } from "../actions";
 
 import CalculatorOutput from "./CalculatorOutput";
 let isLoading = false;
@@ -24,9 +24,9 @@ class CalculatorInput extends Component {
 
   renderInput = ({ input, label, meta }) => {
     return (
-      <div className="input my-2 mx-2">
-        <label>{label}</label>
-        <br />
+      <div className="input">
+        <label className="label">{label}</label>
+
         <input {...input} />
         {this.renderError(meta)}
       </div>
@@ -35,42 +35,50 @@ class CalculatorInput extends Component {
 
   renderSelect = ({ input, label, meta }) => {
     return (
-      <div className="currency-select my-2 mx-2">
-        <label className="mr-2">{label}</label>
+      <div className="currency-select input">
+        <label className="label">{label}</label>
         <select {...input}>
           <option />
-          <option value="USD">USD</option>
-          <option value="GBP">GBP</option>
-          <option value="EUR">EUR</option>
-          <option value="YEN">YEN</option>
-          <option value="AUS">AUS</option>
-          <option value="BTC">BTC</option>
+          <option value="USD">US Dollars (USD)</option>
+          <option value="GBP">Pound Sterling (GBP)</option>
+          <option value="EUR">Euro (EUR)</option>
+          <option value="AED">Emirati Dirham (AED)</option>
+          <option value="AUD">Australian dollar (AUD)</option>
+          <option value="CAD">Canadian Dollar (CAD)</option>
+          <option value="HKD">Hong Kong Dollar (HKD)</option>
+          <option value="JPY">Japanese Yen (JPY)</option>
+          <option value="NZD">New Zealand Dollar (NZD)</option>
+          <option value="SGD">Singapore Dollar (SGD)</option>
         </select>
-        {this.renderError(meta)}
       </div>
     );
   };
 
   componentDidMount() {
-    // this.props.makeRequest();
+    this.props.makeRequest();
   }
+  componentDidUpdate({ convertCurrency }) {
+    convertCurrency();
+  }
+
   render() {
     return (
-      <form
-        className="input-form"
-        // onSubmit={this.props.handleSubmit()}
-      >
+      <form className="input-form">
         <div className="currencies">
           <Field
             name="input_currency"
-            label="Currency:"
+            label="From:"
             component={this.renderSelect}
           />
-          <img className="icon" src={require("./icons/swap.svg")} />
+          <img
+            className="icon icon--swap"
+            src={require("./icons/swap.svg")}
+            onClick={this.props.swapFields}
+          />
 
           <Field
             name="output_currency"
-            label="Output Currency:"
+            label="To:"
             component={this.renderSelect}
           />
         </div>
@@ -87,9 +95,6 @@ class CalculatorInput extends Component {
 
 const validate = (values) => {
   const errors = {};
-  if (!values.amount) {
-    errors.amount = "You must put in an amount of money";
-  }
   if (isNaN(Number(values.amount))) {
     errors.amount = errors.amount ? errors.amount : "Please use numbers only";
   }
@@ -99,9 +104,14 @@ const validate = (values) => {
 const mapStateToProps = (state) => {
   return {
     rates: state.rates,
+    inputForm: state.form,
   };
 };
-CalculatorInput = connect(mapStateToProps, { makeRequest })(CalculatorInput);
+CalculatorInput = connect(mapStateToProps, {
+  makeRequest,
+  convertCurrency,
+  swapFields,
+})(CalculatorInput);
 
 export default reduxForm({ form: "CalculatorInput", validate })(
   CalculatorInput
