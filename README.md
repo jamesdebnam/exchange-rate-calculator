@@ -1,5 +1,6 @@
 # Exchange rate calculator!
 
+Check it out [here!](https://jamesdebnam.github.io/exchange-rate-calculator/)  
 Built with React and Redux  
 Forms created with redux form, and axios used for API requests
 
